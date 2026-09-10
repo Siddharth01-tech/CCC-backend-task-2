@@ -80,6 +80,8 @@ const login = async (req, res) => {
             process.env.JWT_SECRET
         );
 
+        res.cookie("token",token)
+
         res.status(200).json({
             message: "Login successful",
             token,
@@ -97,7 +99,21 @@ const login = async (req, res) => {
     }
 };
 
+const logout = async(req,res)=>{
+    try {
+        res.clearCookie("token");
+        return res.status(200).json({
+            message:"logout successfully"
+        })
+    } catch (error) {
+         res.status(500).json({
+            message: error.message
+        });
+    }
+}
+
 module.exports = {
     signup,
     login,
+    logout,
 };

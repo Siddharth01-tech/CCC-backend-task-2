@@ -14,9 +14,9 @@ const userSchema=new mongoose.Schema({
     password:{
         type:String,
         require:true,
-        unique:true
-    }
-})
+        unique:true,
+    }  
+});
 
 const userModel=mongoose.model("user",userSchema)
 
